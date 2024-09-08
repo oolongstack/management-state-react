@@ -1,2 +1,2 @@
-export const jotai = "jotai";
-console.log("jotai");
+export const jotai = 'jotai'
+console.log('jotai')
