@@ -1,11 +1,11 @@
 const config = {
-  testMatch: ["**/__tests__/**/*.[jt]s?(x)"],
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
+  testMatch: ['**/__tests__/**/*.[jt]s?(x)'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   transform: {
-    "^.+\\.[tj]sx?$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.json" }],
+    '^.+\\.[tj]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.json' }],
   },
-  testEnvironment: "jsdom",
+  testEnvironment: 'jsdom',
   testTimeout: 35000,
-};
+}
 
-module.exports = config;
+module.exports = config

@@ -1,9 +1,14 @@
-import PropDrilling from './components/PropDrilling'
+import ContextSelector from './components/context-selector'
+import JotaiTearing from './components/jotai-tearing'
 
 function App() {
   return (
     <>
-      <PropDrilling />
+      <ContextSelector />
+
+      <br />
+
+      <JotaiTearing />
     </>
   )
 }

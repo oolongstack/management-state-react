@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .moving-box {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      position: relative;
+      animation: moveLeftRight 2s infinite alternate;
+    }
+
+    @keyframes moveLeftRight {
+      from {
+        left: 0;
+      }
+      to {
+        left: 100px;
+      }
+    }
+  </style>
+  <body>
+    <div class="moving-box"></div>
+    <button class="requestIdleCallback">requestIdleCallback</button>
+    <br />
+    <button class="normal">normal</button>
+  </body>
+  <script>
+    function task() {
+      const start = performance.now()
+      while (performance.now() - start < 0.01) {}
+    }
+    function processNormalTask() {
+      for (let i = 0; i < 10000; i++) {
+        task()
+      }
+    }
+    document
+      .querySelector('.normal')
+      .addEventListener('click', processNormalTask)
+
+    function processIdleTask() {
+      let i = 0
+      function handler(idleDeadline) {
+        while (idleDeadline.timeRemaining() > 0 && ++i < 10000) {
+          task()
+        }
+        if (i < 10000) {
+          requestIdleCallback(handler)
+        }
+      }
+      requestIdleCallback(handler)
+    }
+    document
+      .querySelector('.requestIdleCallback')
+      .addEventListener('click', processIdleTask)
+  </script>
+</html>
